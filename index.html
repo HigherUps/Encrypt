@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <script src="assets/js/random.js" defer></script> -->
+    <title>Encrypt With TheHigherUps</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         * {
@@ -31,15 +30,8 @@
             border: 1px solid white;
         }
     </style>
-
 </head>
 <body>
-    <!-- <p id="output">Beans</p><br>
-    <button id="first">Click</button>
-    <button id="second" hidden>Click</button><br><br><br>
-    <button id="remove">Delete Source Code</button><br>
-    <img src="assets/images/checkout.png" alt="Image" id="randomImage"><br><br>
-    <p id="demo"></p> -->
     <strong><label for="encInput">Encrypt:</label></strong><br><br>
     <input type="text" name="encInput" id="encInput" placeholder="Input Text" autocomplete="off"><br><br>
     <input type="text" name="encPass" id="encPass" placeholder="Create Password" autocomplete="off"><br><span>*For Optimal Encyption Password Should Be 16 Or More Characters</span><br></span>
@@ -79,22 +71,5 @@
         console.log(decryptedText);
         decOutput.innerText = decryptedText;
     }
-
-
 </script>
-
-
-
-<!-- <script defer>
-    var text = "Cool Beans";
-    var pass = "123"
-
-    var enc = CryptoJS.AES.encrypt(text, pass);
-    var dec = CryptoJS.AES.decrypt(enc, pass);
-    console.log(enc);
-    console.log(dec);
-    var out = document.getElementById('demo');
-    out.innerHTML = dec.toString(CryptoJS.enc.Utf8);
-
-</script> -->
 </html>
