@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
     <title>Encrypt With TheHigherUps</title>
     <!-- <script src="assets/js/random.js" defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -45,6 +46,7 @@
             color: white;
             background: black;
             text-align: center;
+            font-family: TheHigherUps;
         }
         input {
             color: white;
@@ -73,18 +75,28 @@
             bottom: 0px;
             text-decoration: underline;
         }
+        #encOutput {
+            word-wrap: break-word;
+        }
+        #decOutput {
+            word-wrap: break-word;
+        }
+        #header-top {
+            text-shadow: 3px 3px 0 red, 6px 6px 0 blue, 9px 9px 0 green;
+        }
     </style>
 
 </head>
 <body>
     <div id="header">
-        <h1>THEHIGHERUPS</h1>
-        <h2>ENCRYPT</h2>
+        <h1 id="header-top">THEHIGHERUPS</h1>
+        <h2 id="header-bottom">ENCRYPT</h2>
     </div>
     <strong><label for="encInput">Encrypt:</label></strong><br><br>
     <input type="text" name="encInput" id="encInput" placeholder="Input Text" autocomplete="off"><br><br>
-    <input type="text" name="encPass" id="encPass" placeholder="Create Secret Key" autocomplete="off"><br><span>*For Optimal Encyption Secret Key Should Be 16 Or More Characters</span><br></span>
-    <button id="enc">Encrypt Text</button><br><br>
+    <input type="text" name="encPass" id="encPass" placeholder="Create Secret Key" autocomplete="off"><br><br></span>
+    <button id="enc">Encrypt Text</button><br>
+    <button id="copyText">Copy Generated Text</button><br><br>
     <p id="encOutput"></p>
     <hr>
     <!-- Text TO DECRYPT -->
@@ -93,9 +105,6 @@
     <input type="text" name="decPass" id="decPass" placeholder="Input Secret Key" autocomplete="off"><br><br>
     <button id="dec">Decyrpt Text</button><br><br>
     <p id="decOutput"></p>
-    <div id="footer">
-        <h3>&copy;2022 THEHIGHERUPS</h3>
-    </div>
 </body>
 <script>
     var encButton = document.getElementById("enc");
