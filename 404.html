@@ -1,13 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404 - Not Found</title>
+    <title>Error 404 - File Not Found</title>
+    <style>
+        @font-face {
+            font-family: Beans;
+            src: url(VCR.ttf);
+        }
+        * {
+            padding: 0px;
+            font-family: Beans;
+        }
+        body {
+            background-image: url(background.jpeg);
+            background-size: cover;
+            background-color: black;
+            color: white;
+        }
+        div {
+            padding: 15px 0 15px 0;
+            background: black;
+            width: 350px;
+            margin: 0 auto;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+        }
+        button {
+            width: 75%;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 15px;
+            border: 1px solid black;
+            background: gray;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h1>Error 404</h1>
-  <h2>File Not Found</h2>
+    <!-- Image Source: Video Game (Hacknet) -->
+    <div>
+        <h1>Error 404</h1>
+        <h2>File Not Found</h2><br>
+        <button id="home">Go Home</button>
+    </div>
 </body>
+<script>
+    let button = document.getElementById("home");
+    if (button) {
+        button.addEventListener("click", goHome)
+    }
+    function goHome() {
+        window.location = "/index.html"
+    }
+</script>
 </html>
