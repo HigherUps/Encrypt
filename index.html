@@ -1,136 +1,86 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
     <title>Encrypt With TheHigherUps</title>
-    <!-- <script src="assets/js/random.js" defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        @font-face {
-            font-family: TheHigherUps;
-            src: url(VCR.ttf);
-        }
-        @media only screen and (max-width: 800px) {
-            #encInput {
-                width: 50vw;
-            }
-            #encPass {
-                width: 50vw;
-            }
-            #enc {
-                width: 50vw;
-            }
-            #decInput {
-                width: 50vw;
-            }
-            #decPass {
-                width: 50vw;
-            }
-            #dec {
-                width: 50vw;
-            }
-        }
-        @media only screen and (max-width: 815px) {
-            #header {
-                display: none;
-            }
-            #footer {
-                display: none;
-            }
-        }
-        * {
-            margin: 15px;
-            color: white;
-            background: black;
-            text-align: center;
-            font-family: TheHigherUps;
-        }
-        input {
-            color: white;
-            width: 25vw;
-            height: 25px;
-            border-radius: 5px;
-            border: 1px solid white;
-        }
-        input::placeholder {
-            color: rgb(168, 168, 168);
-            font-style: italic;
-        }
-        button {
-            width: 15vw;
-            border-radius: 5px;
-            border: 1px solid white;
-        }
-        #header {
-            position: absolute;
-            top: 0;
-            font-family: TheHigherUps;
-        }
-        #footer {
-            font-family: TheHigherUps;
-            position: absolute;
-            bottom: 0px;
-            text-decoration: underline;
-        }
-        #encOutput {
-            word-wrap: break-word;
-        }
-        #decOutput {
-            word-wrap: break-word;
-        }
-        #header-top {
-            text-shadow: 3px 3px 0 red, 6px 6px 0 blue, 9px 9px 0 green;
-        }
-    </style>
-
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
     <div id="header">
         <h1 id="header-top">THEHIGHERUPS</h1>
         <h2 id="header-bottom">ENCRYPT</h2>
     </div>
-    <strong><label for="encInput">Encrypt:</label></strong><br><br>
-    <input type="text" name="encInput" id="encInput" placeholder="Input Text" autocomplete="off"><br><br>
-    <input type="text" name="encPass" id="encPass" placeholder="Create Secret Key" autocomplete="off"><br><br></span>
+    <strong><label for="encText">Encrypt:</label></strong><br><br>
+    <textarea name="encText" id="encText" cols="30" rows="10" placeholder="Input Text"></textarea><br>
+    <input type="text" name="encKey" id="encKey" placeholder="Create Secret Key"><button id="gen">G</button><br>
     <button id="enc">Encrypt Text</button><br>
-    <button id="copyText">Copy Generated Text</button><br><br>
-    <p id="encOutput"></p>
+    <button id="copy" title="Text Copied">Copy Generated Text</button><br>
+    <p id="encOutput"></p><br><br><br>
     <hr>
-    <!-- Text TO DECRYPT -->
-    <strong><label for="decInput">Decrypt:</label></strong><br><br>
-    <input type="text" name="decInput" id="decInput" placeholder="Input Encrypted Text" autocomplete="off"><br><br>
-    <input type="text" name="decPass" id="decPass" placeholder="Input Secret Key" autocomplete="off"><br><br>
-    <button id="dec">Decyrpt Text</button><br><br>
+    <!-- Decrypt -->
+    <strong><label for="decText">Decrypt:</label></strong><br><br>
+    <textarea name="decText" id="decText" cols="30" rows="10" placeholder="Input Encrypted Text"></textarea><br>
+    <input type="text" name="decKey" id="decKey" placeholder="Input Secret Key"><br>
+    <button id="dec">Decrypt Text</button>
     <p id="decOutput"></p>
+    <p id="test"></p>
 </body>
 <script>
+    function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min) + min)
+    }
+    var genKey = document.getElementById("gen");
     var encButton = document.getElementById("enc");
     var decButton = document.getElementById("dec");
-    if (encButton) {
-        encButton.addEventListener("click", encryptText)
-    };
-    if (decButton) {
-        decButton.addEventListener("click", decryptText);
+    var copyButton = document.getElementById("copy");
+    if(encButton) {
+        encButton.addEventListener("click", encText);
     }
-    function encryptText() {
-        var out = document.getElementById("encOutput");
-        var textToEncrypt = document.getElementById("encInput").value;
-        var textPassword = document.getElementById("encPass").value;
-        var textFinshed = CryptoJS.AES.encrypt(textToEncrypt, textPassword);
-        console.log(textFinshed);
-        out.innerText = textFinshed;
+    if(decButton) {
+        decButton.addEventListener("click", decText);
     }
-    function decryptText() {
-        var decOutput = document.getElementById("decOutput");
-        var textToDecrypt = document.getElementById("decInput").value;
-        var decPass = document.getElementById("decPass").value;
-        var decryptedText = CryptoJS.AES.decrypt(textToDecrypt, decPass).toString(CryptoJS.enc.Utf8);
-        console.log(decryptText);
-        console.log(decryptedText);
-        decOutput.innerText = decryptedText;
+    if(copyButton) {
+        copyButton.addEventListener("click", copyText);
+    }
+    if(genKey) {
+        genKey.addEventListener("click", createKey);
+    }
+    function encText() {
+        var textInput = document.getElementById("encText").value;
+        var keyInput = document.getElementById("encKey").value;
+        var output = document.getElementById("encOutput");
+        if (keyInput === textInput) {
+            alert("The Secret Key Should Not Have The Same Value As The Text");
+            return;
+        }else if (keyInput.length < 16) {
+            alert("The Secret Key Value Should Not Be Less Than 16 Characters");
+            return;
+        } else {
+            var cryptText = CryptoJS.AES.encrypt(textInput, keyInput);
+            output.innerHTML = cryptText;
+        }
+    }
+    function decText() {
+        var textInput = document.getElementById("decText").value;
+        var keyInput = document.getElementById("decKey").value;
+        var output = document.getElementById("decOutput");
+        var decText = CryptoJS.AES.decrypt(textInput, keyInput).toString(CryptoJS.enc.Utf8);
+        output.innerHTML = decText;
+    }
+    function copyText() {
+        var text = document.getElementById("encOutput").innerText;
+        navigator.clipboard.writeText(text);
+    }
+    function createKey() {
+        var key = randomInt(1000000000000000, 9999999999999999);
+        var text = document.getElementById("encKey");
+        text.value = key;
     }
 </script>
 </html>

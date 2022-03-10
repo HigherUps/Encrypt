@@ -1,0 +1,96 @@
+@font-face {
+    font-family: TheHigherUps;
+    src: url(VCR.ttf);
+}
+@media only screen and (max-width: 800px) {
+    #encText {
+        width: 50vw;
+    }
+    #encKey {
+        width: 50vw;
+    }
+    #enc {
+        width: 50vw;
+    }
+    #decText {
+        width: 50vw;
+    }
+    #decKey {
+        width: 50vw;
+    }
+    #dec {
+        width: 50vw;
+    }
+}
+@media only screen and (max-width: 815px) {
+    #header {
+        display: none;
+    }
+}
+* {
+    margin: 15px;
+    font-family: TheHigherUps;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+textarea {
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    resize: none;
+}
+textarea:placeholder-shown {
+    color: rgb(168, 168, 168);
+    font-style: italic;
+}
+input {
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+input::placeholder {
+    color: rgb(168, 168, 168);
+    font-style: italic;
+}
+button {
+    width: 15vw;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+#header {
+    position: absolute;
+    top: 0;
+}
+#header-top {
+    text-shadow: 3px 3px 0 red, 6px 6px 0 blue, 9px 9px 0 green;
+}
+#encText, 
+#decText {
+    width: 25vw;
+}
+#decKey {
+    width: 25vw;
+    height: 20px;
+}
+#encKey {
+    width: 20vw;
+    height: 20px;
+}
+#gen {
+    width: 15px;
+    padding: 0px;
+}
+#enc,
+#dec {
+    width: 25vw;
+    height: 25px;
+}
+#copy {
+    width: 25vw;
+    height: 25px;
+}
+#encOutput,
+#decOutput {
+    word-wrap: break-word;
+}
