@@ -50,10 +50,13 @@
     <div>
         <h1>Error 404</h1>
         <h2>File Not Found</h2><br>
+        <h2 id="url"></h2>
+        <h3>could not be found</h3>
         <button id="home">Go Home</button>
     </div>
 </body>
 <script>
+    document.getElementById("url").innerText = document.location.pathname
     let button = document.getElementById("home");
     if (button) {
         button.addEventListener("click", goHome)
