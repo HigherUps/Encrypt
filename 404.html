@@ -56,7 +56,12 @@
     </div>
 </body>
 <script>
-    document.getElementById("url").innerText = document.location.pathname;
+    if(document.location.pathname === "/404.html" || document.location.pathname === "/404") {
+        document.getElementById("url").innerText = "Nvm, the 404 page"
+        document.getElementById("nf").innerText = "could be found" 
+    } else{
+        document.getElementById("url").innerText = document.location.pathname;
+    }
     let button = document.getElementById("home");
     if (button) {
         button.addEventListener("click", goHome)
