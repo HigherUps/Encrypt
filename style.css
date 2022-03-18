@@ -31,7 +31,6 @@
     margin: 15px;
     font-family: TheHigherUps;
     text-align: center;
-    background-color: black;
     color: white;
 }
 textarea {
@@ -63,7 +62,10 @@ button {
     top: 0;
 }
 #header-top {
-    text-shadow: 3px 3px 0 red, 6px 6px 0 blue, 9px 9px 0 green;
+    text-shadow: -3px -3px 0 red, -6px -6px 0 blue, -9px -9px 0 green;
+}
+#header-bottom {
+    text-shadow: -2px -2px 0 gray;
 }
 #encText, 
 #decText {
@@ -87,10 +89,16 @@ button {
     height: 25px;
 }
 #copy {
-    width: 25vw;
+    width: 20vw;
     height: 25px;
 }
 #encOutput,
 #decOutput {
     word-wrap: break-word;
+}
+#nav {
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
